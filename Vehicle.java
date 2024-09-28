@@ -1,10 +1,12 @@
 public class Vehicle {
-    private final String engineType;
-    private final String transmission;
-    private final String color;
-    private final boolean hasSunroof;
-    private final int numberOfDoors;
+    // Instance variables defining the properties of a vehicle
+    private final String engineType;  // Type of engine (e.g., V8, Electric)
+    private final String transmission; // Transmission type (e.g., Automatic, Manual)
+    private final String color;        // Color of the vehicle (e.g., Red, Black)
+    private final boolean hasSunroof;  // Indicator for sunroof presence
+    private final int numberOfDoors;   // Number of doors in the vehicle
 
+    // Private constructor that initializes the vehicle using the builder
     private Vehicle(VehicleBuilder builder) {
         this.engineType = builder.engineType;
         this.transmission = builder.transmission;
@@ -13,6 +15,7 @@ public class Vehicle {
         this.numberOfDoors = builder.numberOfDoors;
     }
 
+    // Getter methods for accessing vehicle attributes
     public String getEngineType() {
         return engineType;
     }
@@ -33,47 +36,58 @@ public class Vehicle {
         return numberOfDoors;
     }
 
+    // Static nested Builder class for constructing Vehicle instances
     public static class VehicleBuilder {
-        private String engineType;
-        private String transmission;
-        private String color;
-        private boolean hasSunroof;
-        private int numberOfDoors;
+        private String engineType;    // Engine type
+        private String transmission;   // Transmission type
+        private String color;          // Vehicle color
+        private boolean hasSunroof;    // Sunroof flag
+        private int numberOfDoors;     // Count of doors
 
-        public VehicleBuilder withEngineType(String engineType) {
+        // Method to set the engine type
+        public VehicleBuilder setEngineType(String engineType) {
             this.engineType = engineType;
-            return this;
+            return this; // Returning the builder for method chaining
         }
 
-        public VehicleBuilder withTransmission(String transmission) {
+        // Method to set the transmission type
+        public VehicleBuilder setTransmission(String transmission) {
             this.transmission = transmission;
-            return this;
+            return this; // Returning the builder for method chaining
         }
 
-        public VehicleBuilder withColor(String color) {
+        // Method to set the vehicle color
+        public VehicleBuilder setColor(String color) {
             this.color = color;
-            return this;
+            return this; // Returning the builder for method chaining
         }
 
-        public VehicleBuilder withSunroof(boolean hasSunroof) {
+        // Method to specify whether the vehicle has a sunroof
+        public VehicleBuilder setSunroof(boolean hasSunroof) {
             this.hasSunroof = hasSunroof;
-            return this;
+            return this; // Returning the builder for method chaining
         }
 
-        public VehicleBuilder withNumberOfDoors(int numberOfDoors) {
+        // Method to set the number of doors
+        public VehicleBuilder setNumberOfDoors(int numberOfDoors) {
             this.numberOfDoors = numberOfDoors;
-            return this;
+            return this; // Returning the builder for method chaining
         }
 
-        public Vehicle build() {
-            return new Vehicle(this);
+        // Final method to construct and return a Vehicle instance
+        public Vehicle create() {
+            return new Vehicle(this); // Creating a new Vehicle using the builder
         }
     }
 
+    // Overriding toString for better display of vehicle details
     @Override
     public String toString() {
-        return "Vehicle [engineType=" + engineType + ", transmission=" + transmission +
-                ", color=" + color + ", hasSunroof=" + hasSunroof +
-                ", numberOfDoors=" + numberOfDoors + "]";
+        return "Vehicle Details: [Engine Type=" + engineType +
+                ", Transmission=" + transmission +
+                ", Color=" + color +
+                ", Has Sunroof=" + hasSunroof +
+                ", Number of Doors=" + numberOfDoors + "]";
     }
 }
+
